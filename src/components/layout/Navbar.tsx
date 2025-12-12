@@ -56,7 +56,7 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`font-medium text-sm transition-colors hover:text-cyan-500 ${
+                className={`font-normal text-sm transition-colors hover:text-cyan-500 ${
                   location.pathname === link.path
                     ? "text-cyan-500"
                     : "text-navbar-foreground"
@@ -92,7 +92,7 @@ const Navbar = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`font-normal text-sm py-2 transition-colors hover:text-cyan-500 ${
+                  className={`font-medium text-sm py-2 transition-colors hover:text-cyan-500 ${
                     location.pathname === link.path
                       ? "text-cyan-500"
                       : "text-navbar-foreground"
