@@ -85,30 +85,58 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+  try {
+    const res = await fetch("/.netlify/functions/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
 
+    if (res.ok) {
+      toast({
+        title: "Message Sent Successfully",
+        description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
+      });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        service: "",
+        budget: "",
+        timeline: "",
+        subject: "",
+        message: "",
+      });
+    } else {
+      toast({
+        title: "Error",
+        description: "Unable to send message. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    }
+  } catch (err) {
     toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. We'll get back to you within 24 hours.",
+      title: "Error",
+      description: "Server error occurred. Please try again later.",
+      variant: "destructive",
     });
-
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      phone: "",
-      service: "",
-      budget: "",
-      timeline: "",
-      message: "",
-    });
+  } finally {
     setIsSubmitting(false);
-  };
+  }
+};
+
+const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+};
 
   const structuredData = {
     "@context": "https://schema.org",

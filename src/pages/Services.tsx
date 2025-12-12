@@ -108,6 +108,53 @@ const services = [
   },
 ];
 
+const pricingTiers = [
+  {
+    name: "Consultation",
+    price: "Free",
+    description: "Initial consultation to understand your needs",
+    features: [
+      "30-minute discovery call",
+      "Needs assessment",
+      "Preliminary recommendations",
+      "No commitment required",
+    ],
+    cta: "Book a Call",
+    highlighted: false,
+  },
+  {
+    name: "Project-Based",
+    price: "Custom",
+    description: "Fixed pricing for defined project scope",
+    features: [
+      "Detailed project proposal",
+      "Milestone-based delivery",
+      "Clear deliverables",
+      "Post-launch support",
+    ],
+    cta: "Get a Quote",
+    highlighted: true,
+  },
+  {
+    name: "Retainer",
+    price: "From $1,500/mo",
+    description: "Ongoing support and development services",
+    features: [
+      "Dedicated hours per month",
+      "Priority support",
+      "Regular consultations",
+      "Flexible scope",
+    ],
+    cta: "Learn More",
+    highlighted: false,
+  },
+];
+
+const paymentMethods = [
+  { icon: CreditCard, name: "Credit/Debit Cards" },
+  { icon: Building, name: "Bank Transfer" },
+];
+
 const Services = () => {
   const structuredData = {
     "@context": "https://schema.org",

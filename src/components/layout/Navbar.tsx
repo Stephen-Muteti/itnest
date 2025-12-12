@@ -28,12 +28,10 @@ const Navbar = () => {
   }, [location.pathname]);
 
   return (
-    <nav
+    <nav 
       className={`sticky top-0 z-50 bg-navbar border-b transition-shadow duration-300 ${
         isScrolled ? "shadow-md" : "border-border"
       }`}
-      role="navigation"
-      aria-label="Main navigation"
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
@@ -54,25 +52,24 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <ul className="flex items-center gap-6" role="menubar">
-              {navLinks.map((link) => (
-                <li key={link.path} role="none">
-                  <Link
-                    to={link.path}
-                    className={`text-sm font-medium transition-colors hover:text-accent ${
-                      location.pathname === link.path
-                        ? "text-accent"
-                        : "text-navbar-foreground"
-                    }`}
-                    role="menuitem"
-                    aria-current={location.pathname === link.path ? "page" : undefined}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <Button variant="cta" size="sm" asChild>
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`font-medium text-sm transition-colors hover:text-cyan-500 ${
+                  location.pathname === link.path
+                    ? "text-cyan-500"
+                    : "text-navbar-foreground"
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* CTA Button */}
+          <div className="hidden md:block">
+            <Button variant="cta" size="lg" asChild>
               <Link to="/contact">Get a Quote</Link>
             </Button>
           </div>
@@ -81,9 +78,7 @@ const Navbar = () => {
           <button
             className="md:hidden p-2 text-navbar-foreground"
             onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
+            aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -91,32 +86,24 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div
-            id="mobile-menu"
-            className="md:hidden border-t border-border animate-slide-down"
-            role="menu"
-          >
-            <div className="py-4 space-y-2">
+          <div className="md:hidden py-4 border-t border-border animate-fade-in">
+            <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`block px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                  className={`font-medium text-sm py-2 transition-colors hover:text-cyan-500 ${
                     location.pathname === link.path
-                      ? "bg-accent/10 text-accent"
-                      : "text-navbar-foreground hover:bg-muted"
+                      ? "text-cyan-500"
+                      : "text-navbar-foreground"
                   }`}
-                  role="menuitem"
-                  aria-current={location.pathname === link.path ? "page" : undefined}
                 >
                   {link.name}
                 </Link>
               ))}
-              <div className="px-4 pt-2">
-                <Button variant="cta" size="sm" className="w-full" asChild>
-                  <Link to="/contact">Get a Quote</Link>
-                </Button>
-              </div>
+              <Button variant="cta" size="lg" asChild className="mt-2">
+                <Link to="/contact">Get a Quote</Link>
+              </Button>
             </div>
           </div>
         )}
