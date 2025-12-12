@@ -1,8 +1,15 @@
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/seo/SEO";
 
 const Terms = () => {
   return (
     <Layout>
+      <SEO
+        title="Terms & Conditions | itnest"
+        description="Read itnest's terms and conditions for using our IT consultancy services. Understand your rights and responsibilities when engaging with our services."
+        canonical="/terms"
+        keywords="terms and conditions, terms of service, itnest terms, IT consultancy terms"
+      />
       {/* Hero */}
       <section className="bg-hero text-hero-foreground section-padding-sm">
         <div className="container-custom">

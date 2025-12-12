@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
+import SEO from "@/components/seo/SEO";
 import { Button } from "@/components/ui/button";
 import { Target, Eye, Users, Award, CheckCircle, ArrowRight } from "lucide-react";
 
@@ -35,8 +36,31 @@ const milestones = [
 ];
 
 const About = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About itnest",
+    description: "Learn about itnest, a professional IT consultancy based in Nairobi, Kenya, delivering innovative technology solutions globally.",
+    mainEntity: {
+      "@type": "Organization",
+      name: "itnest",
+      foundingLocation: "Nairobi, Kenya",
+      numberOfEmployees: {
+        "@type": "QuantitativeValue",
+        value: "10+",
+      },
+    },
+  };
+
   return (
     <Layout>
+      <SEO
+        title="About Us - itnest IT Consultancy"
+        description="Learn about itnest, a professional IT consultancy based in Nairobi, Kenya, delivering innovative technology solutions to businesses worldwide."
+        canonical="/about"
+        keywords="about itnest, IT consultancy Kenya, technology company Nairobi, IT solutions Africa"
+        structuredData={structuredData}
+      />
       {/* Hero */}
       <section className="bg-hero text-hero-foreground section-padding">
         <div className="container-custom">

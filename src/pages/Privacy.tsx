@@ -1,8 +1,15 @@
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/seo/SEO";
 
 const Privacy = () => {
   return (
     <Layout>
+      <SEO
+        title="Privacy Policy | itnest"
+        description="Read itnest's privacy policy to understand how we collect, use, and protect your personal information when you use our IT consultancy services."
+        canonical="/privacy"
+        keywords="privacy policy, data protection, itnest privacy, information security"
+      />
       {/* Hero */}
       <section className="bg-hero text-hero-foreground section-padding-sm">
         <div className="container-custom">

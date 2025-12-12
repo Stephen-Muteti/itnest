@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/seo/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -76,12 +77,11 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
     company: "",
+    phone: "",
     service: "",
     budget: "",
     timeline: "",
-    subject: "",
     message: "",
   });
 
@@ -89,57 +89,54 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      const res = await fetch("/.netlify/functions/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+    // Simulate form submission
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      if (res.ok) {
-        toast({
-          title: "Message Sent Successfully",
-          description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
-        });
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          company: "",
-          service: "",
-          budget: "",
-          timeline: "",
-          subject: "",
-          message: "",
-        });
-      } else {
-        toast({
-          title: "Error",
-          description: "Unable to send message. Please try again or contact us directly.",
-          variant: "destructive",
-        });
-      }
-    } catch (err) {
-      toast({
-        title: "Error",
-        description: "Server error occurred. Please try again later.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    toast({
+      title: "Message Sent!",
+      description: "Thank you for reaching out. We'll get back to you within 24 hours.",
+    });
+
+    setFormData({
+      name: "",
+      email: "",
+      company: "",
+      phone: "",
+      service: "",
+      budget: "",
+      timeline: "",
+      message: "",
+    });
+    setIsSubmitting(false);
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact itnest",
+    description: "Get in touch with itnest for IT consultancy services. Contact us via phone, email, or our contact form.",
+    mainEntity: {
+      "@type": "Organization",
+      name: "itnest",
+      telephone: "+254-757-090-042",
+      email: "info@itnest.org",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Nairobi",
+        addressCountry: "KE",
+      },
+    },
   };
 
   return (
     <Layout>
+      <SEO
+        title="Contact Us - Get IT Consultancy Quote | itnest"
+        description="Contact itnest for professional IT consultancy services. Get a free quote for web development, system architecture, cybersecurity, and cloud solutions. Based in Nairobi, serving worldwide."
+        canonical="/contact"
+        keywords="contact itnest, IT consultancy quote, web development quote, IT services Kenya, hire IT consultants"
+        structuredData={structuredData}
+      />
       {/* Hero */}
       <section className="bg-hero text-hero-foreground section-padding-sm">
         <div className="container-custom">

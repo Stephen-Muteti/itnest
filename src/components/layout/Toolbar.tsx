@@ -6,28 +6,30 @@ const Toolbar = () => {
       <div className="container-custom">
         <div className="flex flex-col sm:flex-row items-center justify-between py-2 gap-2 sm:gap-4">
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 md:gap-6">
-            <a 
-              href="tel:+254757090042" 
+            <a
+              href="tel:+254757090042"
               className="flex items-center gap-2 hover:text-cyan-300 transition-colors"
+              aria-label="Call us at +254 757 090 042"
             >
-              <Phone className="h-3.5 w-3.5" />
+              <Phone className="h-3.5 w-3.5" aria-hidden="true" />
               <span>+254 757 090 042</span>
             </a>
-            <a 
-              href="mailto:info@itnest.org" 
+            <a
+              href="mailto:info@itnest.org"
               className="flex items-center gap-2 hover:text-cyan-300 transition-colors"
+              aria-label="Email us at info@itnest.org"
             >
-              <Mail className="h-3.5 w-3.5" />
+              <Mail className="h-3.5 w-3.5" aria-hidden="true" />
               <span>info@itnest.org</span>
             </a>
           </div>
           <div className="hidden md:flex items-center gap-6">
             <div className="flex items-center gap-2">
-              <Clock className="h-3.5 w-3.5" />
+              <Clock className="h-3.5 w-3.5" aria-hidden="true" />
               <span>Mon - Fri: 8:00 AM - 6:00 PM</span>
             </div>
             <div className="flex items-center gap-2">
-              <MapPin className="h-3.5 w-3.5" />
+              <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
               <span>Nairobi, Kenya</span>
             </div>
           </div>

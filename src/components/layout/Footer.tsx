@@ -17,12 +17,12 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-footer text-footer-foreground">
+    <footer className="bg-footer text-footer-foreground" role="contentinfo">
       <div className="container-custom section-padding-sm">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
+            <Link to="/" className="flex items-center gap-2 mb-4" aria-label="itnest - Home">
               <div className="w-10 h-10 rounded-lg bg-cyan-500 flex items-center justify-center">
                 <span className="text-primary font-heading font-bold text-xl">iT</span>
               </div>
@@ -34,7 +34,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <nav aria-label="Quick links">
             <h4 className="font-heading font-semibold text-base mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
@@ -43,16 +43,16 @@ const Footer = () => {
                     to={link.path}
                     className="text-sm text-footer-foreground/70 hover:text-cyan-300 transition-colors flex items-center gap-1 group"
                   >
-                    <ArrowRight className="h-3 w-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                    <ArrowRight className="h-3 w-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" aria-hidden="true" />
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Legal */}
-          <div>
+          <nav aria-label="Legal links">
             <h4 className="font-heading font-semibold text-base mb-4">Legal</h4>
             <ul className="space-y-2">
               {legalLinks.map((link) => (
@@ -61,24 +61,25 @@ const Footer = () => {
                     to={link.path}
                     className="text-sm text-footer-foreground/70 hover:text-cyan-300 transition-colors flex items-center gap-1 group"
                   >
-                    <ArrowRight className="h-3 w-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                    <ArrowRight className="h-3 w-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" aria-hidden="true" />
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Contact */}
-          <div>
+          <address className="not-italic">
             <h4 className="font-heading font-semibold text-base mb-4">Contact Us</h4>
             <ul className="space-y-3">
               <li>
                 <a
                   href="tel:+254757090042"
                   className="text-sm text-footer-foreground/70 hover:text-cyan-300 transition-colors flex items-center gap-2"
+                  aria-label="Call us at +254 757 090 042"
                 >
-                  <Phone className="h-4 w-4 text-cyan-500" />
+                  <Phone className="h-4 w-4" aria-hidden="true" />
                   +254 757 090 042
                 </a>
               </li>
@@ -86,27 +87,25 @@ const Footer = () => {
                 <a
                   href="mailto:info@itnest.org"
                   className="text-sm text-footer-foreground/70 hover:text-cyan-300 transition-colors flex items-center gap-2"
+                  aria-label="Email us at info@itnest.org"
                 >
-                  <Mail className="h-4 w-4 text-cyan-500" />
+                  <Mail className="h-4 w-4" aria-hidden="true" />
                   info@itnest.org
                 </a>
               </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 text-cyan-500 mt-0.5" />
-                <span className="text-sm text-footer-foreground/70">
-                  Nairobi, Kenya
-                </span>
+              <li className="text-sm text-footer-foreground/70 flex items-center gap-2">
+                <MapPin className="h-4 w-4" aria-hidden="true" />
+                Nairobi, Kenya
               </li>
             </ul>
-          </div>
+          </address>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-10 pt-6 border-t border-footer-foreground/10">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-footer-foreground/60">
-            <p>© {currentYear} itnest. All rights reserved.</p>
-            <p>Global IT Solutions from Kenya</p>
-          </div>
+        {/* Bottom */}
+        <div className="border-t border-footer-foreground/10 mt-10 pt-6">
+          <p className="text-sm text-footer-foreground/50 text-center">
+            © {currentYear} itnest. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

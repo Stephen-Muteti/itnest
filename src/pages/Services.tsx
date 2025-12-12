@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/seo/SEO";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -86,77 +87,61 @@ const services = [
   {
     icon: Code,
     title: "Custom Software Development",
-    description: "Bespoke software solutions tailored to your unique business requirements.",
+    description: "Bespoke software solutions tailored to your specific business needs.",
     features: [
-      "Business process automation",
       "Enterprise applications",
       "Mobile app development",
-      "API integration",
+      "Integration solutions",
+      "Legacy modernization",
     ],
   },
   {
     icon: Settings,
     title: "IT Consulting & Strategy",
-    description: "Strategic technology planning and consulting to align IT with business goals.",
+    description: "Strategic IT consulting to align technology with your business goals.",
     features: [
       "Technology roadmapping",
+      "Vendor selection",
+      "Process optimization",
       "Digital transformation",
-      "Vendor management",
-      "IT governance",
     ],
   },
-];
-
-const pricingTiers = [
-  {
-    name: "Consultation",
-    price: "Free",
-    description: "Initial consultation to understand your needs",
-    features: [
-      "30-minute discovery call",
-      "Needs assessment",
-      "Preliminary recommendations",
-      "No commitment required",
-    ],
-    cta: "Book a Call",
-    highlighted: false,
-  },
-  {
-    name: "Project-Based",
-    price: "Custom",
-    description: "Fixed pricing for defined project scope",
-    features: [
-      "Detailed project proposal",
-      "Milestone-based delivery",
-      "Clear deliverables",
-      "Post-launch support",
-    ],
-    cta: "Get a Quote",
-    highlighted: true,
-  },
-  {
-    name: "Retainer",
-    price: "From $1,500/mo",
-    description: "Ongoing support and development services",
-    features: [
-      "Dedicated hours per month",
-      "Priority support",
-      "Regular consultations",
-      "Flexible scope",
-    ],
-    cta: "Learn More",
-    highlighted: false,
-  },
-];
-
-const paymentMethods = [
-  { icon: CreditCard, name: "Credit/Debit Cards" },
-  { icon: Building, name: "Bank Transfer" },
 ];
 
 const Services = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    provider: {
+      "@type": "Organization",
+      name: "itnest",
+    },
+    serviceType: "IT Consultancy",
+    areaServed: "Worldwide",
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "IT Services",
+      itemListElement: services.map((service, index) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.title,
+          description: service.description,
+        },
+        position: index + 1,
+      })),
+    },
+  };
+
   return (
     <Layout>
+      <SEO
+        title="Our Services - IT Consultancy Solutions | itnest"
+        description="Comprehensive IT services including web development, system architecture, cybersecurity, cloud solutions, and custom software development. Expert solutions for businesses worldwide."
+        canonical="/services"
+        keywords="IT services, web development, system architecture, cybersecurity, cloud services, software development, IT consulting, Kenya"
+        structuredData={structuredData}
+      />
       {/* Hero */}
       <section className="bg-hero text-hero-foreground section-padding">
         <div className="container-custom">
