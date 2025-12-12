@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* itnest Brand Colors - Deep Navy to Cyan palette */
+    --navy-900: 220 100% 19%; /* #03045e */
+    --navy-700: 202 100% 36%; /* #0077b6 */
+    --cyan-500: 191 100% 42%; /* #00b4d8 */
+    --cyan-300: 189 79% 72%;  /* #90e0ef */
+    --cyan-100: 189 78% 89%;  /* #caf0f8 */
+    
+    --background: 0 0% 100%;
+    --foreground: 220 100% 19%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 100% 19%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 100% 19%;
+
+    --primary: 220 100% 19%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 189 78% 95%;
+    --secondary-foreground: 220 100% 19%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 220 30% 40%;
+
+    --accent: 191 100% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 202 100% 36%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --toolbar-bg: 220 100% 19%;
+    --toolbar-foreground: 189 78% 89%;
+    --navbar-bg: 0 0% 100%;
+    --navbar-foreground: 220 100% 19%;
+    --hero-bg: 220 100% 19%;
+    --hero-foreground: 189 78% 89%;
+    --section-alt-bg: 189 78% 97%;
+    --footer-bg: 220 100% 14%;
+    --footer-foreground: 189 78% 89%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 100% 8%;
+    --foreground: 189 78% 89%;
+
+    --card: 220 100% 12%;
+    --card-foreground: 189 78% 89%;
+
+    --popover: 220 100% 12%;
+    --popover-foreground: 189 78% 89%;
+
+    --primary: 191 100% 42%;
+    --primary-foreground: 220 100% 19%;
+
+    --secondary: 220 100% 16%;
+    --secondary-foreground: 189 78% 89%;
+
+    --muted: 220 100% 16%;
+    --muted-foreground: 189 50% 60%;
+
+    --accent: 202 100% 36%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 50% 20%;
+    --input: 220 50% 20%;
+    --ring: 191 100% 42%;
+
+    --toolbar-bg: 220 100% 12%;
+    --toolbar-foreground: 189 78% 89%;
+    --navbar-bg: 220 100% 10%;
+    --navbar-foreground: 189 78% 89%;
+    --hero-bg: 220 100% 12%;
+    --hero-foreground: 189 78% 89%;
+    --section-alt-bg: 220 100% 10%;
+    --footer-bg: 220 100% 6%;
+    --footer-foreground: 189 78% 89%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+
+  /* Custom thin scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary) / 0.3) hsl(var(--secondary));
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .section-padding-sm {
+    @apply py-12 md:py-16;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
