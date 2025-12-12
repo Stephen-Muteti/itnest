@@ -31,7 +31,7 @@ const ServicesSection = () => (
         ))}
       </div>
       <div className="text-center">
-        <Button variant="cta" asChild><Link to="/services">View All Services<ArrowRight className="h-4 w-4" /></Link></Button>
+        <Button variant="ctaOutline" asChild><Link to="/services">View All Services<ArrowRight className="h-4 w-4" /></Link></Button>
       </div>
     </div>
   </section>
